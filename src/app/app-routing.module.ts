@@ -8,23 +8,14 @@ import { LoginComponent } from 'app/login/login.component';
   imports: [
     RouterModule.forRoot([
       {
-        path: '',
-        component: LayoutComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: 'dashboard',
-            pathMatch: 'full'
-          },
-          {
-            path: 'dashboard',
-            loadChildren: './dashboard/dashboard.module#DashboardModule'
-          }
+        path: '', component: LayoutComponent, children: [
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+          { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+          { path: 'campanha', loadChildren: './campanha/campanha.module#CampanhaModule' }
         ]
       },
       {
-        path: 'login',
-        component: LoginComponent
+        path: 'login', component: LoginComponent
       }
     ]),
   ],

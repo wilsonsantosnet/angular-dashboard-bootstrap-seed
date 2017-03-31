@@ -13,7 +13,7 @@ import { LoginComponent } from 'app/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
