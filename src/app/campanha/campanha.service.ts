@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CampanhaService {
 
-    url = 'http://cnabox.com.br:8077/FranqueadorApi/api/Campanha';
+    url = '';
 
     constructor(
         private http: Http
