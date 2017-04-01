@@ -1,29 +1,8 @@
-<div class="header" style="position: fixed; width: 100%; z-index: 1000;">
-    <div class="row">
-        <div class="col-sm-7"></div>
-        <div class="col-sm-5 text-right">
-            <button type="button" class="btn btn-default btn-menu"><i class="fa fa-navicon"></i></button>
-            <button type="button" class="btn btn-default btn-sair"><i class="fa fa-sign-out"></i></button>
-        </div>
-    </div>
-</div>
-<div class="sidebar-wrapper sidebar-wrapper-hidden">
-    <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-            <a href="#" style="margin-left: 35px;">
-                <img src="https://www.freelogoservices.com/api/main/images/1j+ojl1FOMkX9WypfBe43D6kjPOBpR5LmR7JwXs1M3EMoAJtlCktj...Ni9vsy"
-                />
-            </a>
-        </li>
-        <li>
-            <a href="#" class="active">
-                <i class="fa fa-home" style="padding-right:10px"></i> Dashboard
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="wrapper wrapper-hidden">
-    <div class="page-content-wrapper ">
+<layout-top [menuOpen]='menuOpen' (changeMenu)='onChangeMenu($event)'></layout-top>
+<layout-menu [menuOpen]='menuOpen'></layout-menu>
+
+<div class="wrapper wrapper-hidden" [ngClass]="{'wrapper-hidden': !menuOpen}">
+    <div class="page-content-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="active">Home</li>

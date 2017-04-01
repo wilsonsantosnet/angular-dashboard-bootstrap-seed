@@ -11,8 +11,4 @@ const routes: Routes = [{ path: '', component: LayoutComponent }];
 })
 export class LayoutRoutingModule {
 
-    constructor() {
-        console.log("teste");
-    }
-
 }

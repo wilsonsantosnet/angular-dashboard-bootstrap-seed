@@ -11,18 +11,18 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from 'app/login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    AppRoutingModule,
-    LayoutModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        AppRoutingModule,
+        LayoutModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

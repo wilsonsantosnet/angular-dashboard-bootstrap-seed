@@ -5834,6 +5834,7 @@ button.close {
   margin-left: -219px;
   overflow-y: auto;
   background: #eeeeee;
+  overflow: hidden;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -5875,7 +5876,11 @@ button.close {
 .header {
   background: #eeeeee;
   padding: 10px 15px;
-  border-bottom: 1px solid #ddd; }
+  border-bottom: 1px solid #ddd; 
+  position: fixed;
+  width: 100%; 
+  z-index: 1000;
+  }
   .header .btn-menu,
   .header .btn-sair {
     font-size: 14px;

@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
-  selector: 'layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+    selector: 'layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.css']
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
 
-  activeMenuId: string;
+    menuOpen: boolean;
 
-  themesVisible: boolean;
+    ngOnInit() {
+        this.menuOpen = Cookie.get('menuOpen') === 'true';
+    }
 
-  mobileMenuActive: boolean;
-
-  toggleMenu(e) {
-    this.mobileMenuActive = !this.mobileMenuActive;
-    e.preventDefault();
-  }
+    onChangeMenu(message: string): void {
+        this.menuOpen = !this.menuOpen;
+        Cookie.set('menuOpen', this.menuOpen.toString());
+    }
 
 }

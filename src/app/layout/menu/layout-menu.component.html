@@ -1,0 +1,20 @@
+<div class="sidebar-wrapper" [ngClass]="{'sidebar-wrapper-hidden': !menuOpen}">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a [routerLink]="''" style="margin-left: 35px;">
+                <img src="https://www.freelogoservices.com/api/main/images/1j+ojl1FOMkX9WypfBe43D6kjPOBpR5LmR7JwXs1M3EMoAJtlCktj...Ni9vsy"
+                />
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="'/dashboard'" class="active">
+                <i class="fa fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="'/campanha'" class="active">
+                <i class="fa fa-edit"></i> Campanhas
+            </a>
+        </li>
+    </ul>
+</div>
