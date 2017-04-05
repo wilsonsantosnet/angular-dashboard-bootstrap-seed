@@ -82,9 +82,8 @@
                     </div>
                 </form>
             </div>
-
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid">Salvar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid" (click)="createForm.ngSubmit.emit()">Salvar</button>
                 <button class="btn btn-default" type="button" (click)="createModal.hide()">Cancelar</button>
             </div>
         </div>
