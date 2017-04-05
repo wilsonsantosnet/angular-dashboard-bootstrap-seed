@@ -4,7 +4,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs/Rx';
 
 @Injectable()
-export class ApiService {
+export class ApiService<T> {
 
     public Get = this._get;
     public GetDetails = this._getDetails;
@@ -59,7 +59,7 @@ export class ApiService {
         return this._getMethodCustom(resource, 'GetDataItem');
     }
 
-    private _get(resource: string): Observable<Campanha[]> {
+    private _get(resource: string): Observable<T[]> {
         return this.http.get(this.makeBaseUrl(resource))
             .map(this.successResult)
             .catch(this.errorResult);

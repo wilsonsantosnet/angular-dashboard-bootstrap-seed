@@ -18,12 +18,16 @@ export class CampanhaComponent implements OnInit {
     collectionCampanha: Campanha[];
     model = new Campanha('');
 
-    constructor(private api: ApiService,
-        private http: Http) { }
+    constructor(private api: ApiService<Campanha>) { }
 
     ngOnInit() {
         this.Load();
     }
+
+    Load() {
+        this.api.Get('Campanha').subscribe(data => this.collectionCampanha = data));
+    }
+
 
     Create() {
         this.api.Post('Campanha', this.model).subscribe(
@@ -33,12 +37,6 @@ export class CampanhaComponent implements OnInit {
     onCreate(data) {
         this.createModal.hide();
         this.Load();
-    }
-
-    Load() {
-        this.api.Get('Campanha').subscribe(
-            data => this.collectionCampanha = data,
-            error => console.log('error ' + error));
     }
 
 }
