@@ -1,6 +1,7 @@
-export class Campanha {
+import { IApi } from '../shared/api.interface';
+export class Campanha implements IApi {
 
-    constructor(
-        public Nome: string,
-    ) { }
+    public Resource = 'Campanha';
+    public Nome: string;
+
 }
