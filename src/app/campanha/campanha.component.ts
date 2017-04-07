@@ -1,15 +1,14 @@
 import { ModalDirective } from 'ng2-bootstrap/modal';
 import { ViewChild } from '@angular/core/src/metadata/di';
-import { Http, RequestOptions } from '@angular/http';
-import { ApiService } from '../shared/api.service';
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Campanha } from './campanha';
+import { CampanhaService } from './campanha.service';
 
 @Component({
     selector: 'campanha',
     templateUrl: './campanha.component.html',
     styleUrls: ['./campanha.component.css'],
-    providers: [ApiService],
+    providers: [CampanhaService],
 })
 export class CampanhaComponent implements OnInit {
 
@@ -18,9 +17,7 @@ export class CampanhaComponent implements OnInit {
     collectionCampanha: Campanha[];
     model = new Campanha();
 
-    constructor(private api: ApiService<Campanha>) {
-        this.api.setResource(new Campanha());
-    }
+    constructor(private api: CampanhaService) { }
 
     ngOnInit() {
         this.Load();

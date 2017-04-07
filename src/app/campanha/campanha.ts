@@ -1,7 +1,5 @@
-import { IApi } from '../shared/api.interface';
-export class Campanha implements IApi {
+export class Campanha {
 
-    public Resource = 'Campanha';
     public Nome: string;
 
 }

@@ -1,3 +1,4 @@
+import { strictEqual } from 'assert';
 import { IApi } from './api.interface';
 import { Campanha } from '../campanha/campanha';
 import { Http, RequestOptions, Response, Headers } from '@angular/http';
@@ -5,7 +6,7 @@ import { Inject, Injectable, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs/Rx';
 
 @Injectable()
-export class ApiService<T extends IApi> {
+export abstract class ApiService<T> {
 
     public Get = this._get;
     public GetDetails = this._getDetails;
@@ -18,16 +19,14 @@ export class ApiService<T extends IApi> {
     // public Delete = _delete;
 
     private apiDefault = 'http://cnabox.com.br:8075/FranqueadorApi/api';
-    private _apiClass: T;
+    protected resource: string;
 
     constructor(private http: Http) { }
 
-    public setResource(instance: T) {
-        this._apiClass = instance;
-    }
+    public abstract setResource()
 
-    private getResource(): string {
-        return this._apiClass.Resource;
+    public getResource(): string {
+        return this.resource;
     }
 
     private _post(data: any) {
