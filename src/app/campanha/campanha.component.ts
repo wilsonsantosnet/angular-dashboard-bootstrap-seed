@@ -1,7 +1,6 @@
 import { CampanhaFilter } from './campanha.filter';
 import { ModalDirective } from 'ng2-bootstrap/modal';
-import { ViewChild } from '@angular/core/src/metadata/di';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Campanha } from './campanha';
 import { CampanhaService } from './campanha.service';
 

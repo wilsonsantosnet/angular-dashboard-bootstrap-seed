@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'layout',
