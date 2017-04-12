@@ -18,7 +18,7 @@ export abstract class ApiService<T> {
     public Put = this._put;
     public Delete = this._delete;
 
-    private apiDefault = 'http://cnabox.com.br:8077/FranqueadorApi/api';
+    private apiDefault = '';
     protected resource: string;
 
     constructor(private http: Http) {
