@@ -5933,15 +5933,13 @@ body {
   margin: 200px auto; }
 
 .table.has-tickbox thead tr th:first-child {
-  width: 18px;
+  width: 25px;
   text-align: center; }
 
 .table tbody tr td:last-child {
-  text-transform: uppercase;
   text-align: center; }
 
 .table.has-tickbox tbody tr td:first-child {
-  text-transform: uppercase;
   text-align: center; }
 
 .no-padding {

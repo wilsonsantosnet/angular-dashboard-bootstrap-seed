@@ -43,6 +43,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Ativo</th>
                                 <th style="width:75px;" class="text-center">Ações</th>
                             </tr>
                         </thead>
@@ -51,8 +52,11 @@
                                 <td>{{ campanha.CampanhaId }}</td>
                                 <td>{{ campanha.Nome }}</td>
                                 <td>
-                                    <button class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                                    <span class='label' [ngClass]="{'label-danger': !campanha.Ativo, 'label-success': campanha.Ativo}">{{ campanha.Ativo ? 'Sim' : 'Não' }}</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-xs btn-primary" (click)="edit(campanha.CampanhaId);"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs btn-danger" (click)="delete(campanha);"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -75,7 +79,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form (ngSubmit)="Create()" #createForm="ngForm">
+                <form (ngSubmit)="ConfirmSave()" #createForm="ngForm">
+                    <input type="hidden" name="CampanhaId" id="CampanhaId" [(ngModel)]="model.CampanhaId" />
                     <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" name="Nome" id="nome" [(ngModel)]="model.Nome" required />
@@ -83,8 +88,32 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid" (click)="createForm.ngSubmit.emit()">Salvar</button>
                 <button class="btn btn-default" type="button" (click)="createModal.hide()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid" (click)="createForm.ngSubmit.emit()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <h4 class="modal-title pull-left">Confirmação</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="ConfirmDelete()" #deleteForm="ngForm">
+                    <input type="hidden" name="CampanhaId" id="CampanhaId" [(ngModel)]="model.CampanhaId" />
+                    <h4>Confirma a remoção deste item?</h4>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" (click)="deleteModal.hide()">Cancelar</button>
+                <button type="submit" class="btn btn-danger" (click)="deleteForm.ngSubmit.emit()">Confirmar</button>
             </div>
         </div>
     </div>
