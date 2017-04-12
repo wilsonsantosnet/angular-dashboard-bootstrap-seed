@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
-import { LoginComponent } from 'app/login/login.component';
 
 @NgModule({
   imports: [
@@ -13,9 +12,6 @@ import { LoginComponent } from 'app/login/login.component';
           { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
           { path: 'campanha', loadChildren: './campanha/campanha.module#CampanhaModule' }
         ]
-      },
-      {
-        path: 'login', component: LoginComponent
       }
     ]),
   ],

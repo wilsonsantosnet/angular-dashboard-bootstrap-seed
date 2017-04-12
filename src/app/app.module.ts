@@ -8,12 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
 
 import { LayoutComponent } from './layout/layout.component';
-import { LoginComponent } from 'app/login/login.component';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        LoginComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
