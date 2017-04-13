@@ -13,17 +13,17 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Filtros</div>
                 <div class="panel-body">
-                    <form>
+                    <form (ngSubmit)="Filter()" #filterForm="ngForm">
                         <section class="col-md-6">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input type="text" class="form-control" />
+                                <input type="text" class="form-control" name="Nome" [(ngModel)]="filter.Nome" />
                             </div>
                         </section>
                     </form>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" (click)="filterForm.ngSubmit.emit()">
                         <span class="fa fa-search"></span>
                         Filtrar
                     </button>
@@ -83,7 +83,7 @@
                     <input type="hidden" name="CampanhaId" id="CampanhaId" [(ngModel)]="model.CampanhaId" />
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" name="Nome" id="nome" [(ngModel)]="model.Nome" required />
+                        <input type="text" class="form-control" name="Nome" [(ngModel)]="model.Nome" required />
                     </div>
                 </form>
             </div>

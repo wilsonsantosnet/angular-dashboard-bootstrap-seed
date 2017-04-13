@@ -1,5 +1,5 @@
+import { HttpResult } from './http-result';
 import { Filter } from './filter';
-import { IApi } from './api.interface';
 import { Campanha } from '../campanha/campanha';
 import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
 import { Inject, Injectable, OnInit } from '@angular/core';
@@ -18,16 +18,22 @@ export abstract class ApiService<T> {
     public Put = this._put;
     public Delete = this._delete;
 
-    private apiDefault = '';
+    private apiDefault = 'http://177.153.18.87:8077/FranqueadorApi/api';
     protected resource: string;
 
     constructor(private http: Http) {
-        this.setResource();
+
     }
 
-    public abstract setResource()
+    protected setResource(resource: string) {
+        this.resource = 'resource';
+    }
 
     public getResource(): string {
+        
+        if (this.resource == null)
+            throw 'resource não definido';
+
         return this.resource;
     }
 
@@ -40,56 +46,53 @@ export abstract class ApiService<T> {
         return new RequestOptions({ headers: headers });
     }
 
-    private _delete(data: any) {
+    private _delete(data: any): Observable<HttpResult<T>> {
         return this.http.delete(this.makeBaseUrl(), this.requestOptions().merge(new RequestOptions({ search: this.makeSearchParams(data) })))
             .map(this.successResult)
             .catch(this.errorResult);
     }
 
-    private _post(data: any) {
+    private _post(data: any): Observable<HttpResult<T>> {
         return this.http.post(this.makeBaseUrl(), JSON.stringify(data), this.requestOptions())
             .map(this.successResult)
             .catch(this.errorResult);
     }
 
-    private _put(data: any) {
-        return this.http.put(this.makeBaseUrl(), JSON.stringify(data), this.requestOptions());
+    private _put(data: any): Observable<HttpResult<T>> {
+        return this.http.put(this.makeBaseUrl(), JSON.stringify(data), this.requestOptions())
+            .map(this.successResult)
+            .catch(this.errorResult);;
     }
 
-    private successResult(res: Response): Observable<any> {
-        console.log("success");
+    private successResult(res: Response): Observable<HttpResult<T>> {
         return res.json();
     }
 
-    private completeResult() {
-        console.log("finaly");
-    }
-
-    private errorResult(error: Response) {
+    private errorResult(error: Response): Observable<HttpResult<T>> {
         return Observable.throw(error);
     }
 
-    private _getDataListCustom(): Observable<T[]> {
+    private _getDataListCustom(): Observable<HttpResult<T>> {
         return this._getMethodCustom('GetDataListCustom');
     }
 
-    private _getDetails(): Observable<T[]> {
+    private _getDetails(): Observable<HttpResult<T>> {
         return this._getMethodCustom('GetDetails');
     }
 
-    private _getDataCustom(): Observable<T[]> {
+    private _getDataCustom(): Observable<HttpResult<T>> {
         return this._getMethodCustom('GetDataCustom');
     }
 
-    private _dataitem(): Observable<T[]> {
+    private _dataitem(): Observable<HttpResult<T>> {
         return this._getMethodCustom('GetDataItem');
     }
 
-    private _getMethodCustom(method: string) {
+    private _getMethodCustom(method: string): Observable<HttpResult<T>> {
         return this.getBase(this.makeGetCustomMethodBaseUrl(method));
     }
 
-    private _get(filters?): Observable<any> {
+    private _get(filters?: Filter): Observable<HttpResult<T>> {
         return this.getBase(this.makeBaseUrl(), filters);
     }
 
@@ -114,7 +117,7 @@ export abstract class ApiService<T> {
         return params;
     }
 
-    private getBase(url: string, filters?: Filter) {
+    private getBase(url: string, filters?: Filter): Observable<HttpResult<T>> {
 
         if (filters != null && filters.Id != null) {
             url += "/" + filters.Id;

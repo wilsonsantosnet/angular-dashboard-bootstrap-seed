@@ -7,7 +7,6 @@ import { CampanhaService } from './campanha.service';
 @Component({
     selector: 'campanha',
     templateUrl: './campanha.component.html',
-    styleUrls: ['./campanha.component.css'],
     providers: [CampanhaService],
 })
 export class CampanhaComponent implements OnInit {
@@ -17,15 +16,22 @@ export class CampanhaComponent implements OnInit {
 
     collectionCampanha: Campanha[];
     model = new Campanha();
+    filter = new CampanhaFilter();
 
-    constructor(private api: CampanhaService) { }
+    constructor(private api: CampanhaService) { 
+        this.api.setResource();
+    }
 
     ngOnInit() {
         this.Load();
     }
 
-    Load() {
-        this.api.Get().subscribe(data => this.collectionCampanha = data.DataList);
+    Load(filters?: CampanhaFilter) {
+        this.api.Get(filters).subscribe(data => this.collectionCampanha = data.DataList);
+    }
+
+    Filter(){
+        this.Load(this.filter);
     }
 
     ConfirmSave() {
