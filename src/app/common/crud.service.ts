@@ -1,11 +1,13 @@
 import { controlPath } from '@angular/forms/src/directives/shared';
-import { ModalDirective } from 'ng2-bootstrap/modal';
-import { Filter } from './filter';
-import { ApiService } from '../common/api.service';
 import { Injectable } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+
+import { Dto } from './dto';
+import { Filter } from './filter';
+import { ApiService } from './api.service';
 
 @Injectable()
-export class CrudService<T, TFilter extends Filter> extends ApiService<T> {
+export class CrudService<T extends Dto, TFilter extends Filter> extends ApiService<T> {
 
     public itens: T[];
     public model: T;
@@ -13,10 +15,10 @@ export class CrudService<T, TFilter extends Filter> extends ApiService<T> {
     public saveModal: ModalDirective;
     public deleteModal: ModalDirective;
 
-    public Start(resource: string, filter: TFilter, model: T, createModal: ModalDirective, deleteModal: ModalDirective) {
+    public Start(resource: string, startModel: T, startFilters: TFilter, createModal: ModalDirective, deleteModal: ModalDirective) {
         this.resource = resource;
-        this.filter = filter;
-        this.model = model;
+        this.model = startModel;
+        this.filter = startFilters;
         this.saveModal = createModal;
         this.deleteModal = deleteModal;
         this.Load();

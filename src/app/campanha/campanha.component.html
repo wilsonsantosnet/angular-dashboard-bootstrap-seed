@@ -14,10 +14,22 @@
                 <div class="panel-heading">Filtros</div>
                 <div class="panel-body">
                     <form (ngSubmit)="crud.ExecuteFilter()" #filterForm="ngForm">
-                        <section class="col-md-6">
+                        <section class="col-md-4">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input type="text" class="form-control" name="Nome" [(ngModel)]="crud.filter.Nome" />
+                                <input type="text" class="form-control" name="Nome" (ngModel)="crud.filter.Nome" />
+                            </div>
+                        </section>
+                        <section class="col-md-4">
+                            <div class="form-group">
+                                <label>Data</label>
+                                <input type="date" class="form-control" name="UserCreateDateStart" (ngModel)="crud.filter.UserCreateDateStart" />
+                            </div>
+                        </section>
+                        <section class="col-md-4">
+                            <div class="form-group">
+                                <label>Campanhas</label>
+                                <make-select (ngModelChange)="crud.filter.CampanhaId = $event" [dataitem]="'Campanha'"></make-select>
                             </div>
                         </section>
                     </form>
@@ -30,7 +42,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="row">
@@ -69,11 +80,11 @@
     </div>
 </div>
 
-<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div bsModal #createModal="bs-modal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header alert-success">
-                <h4 class="modal-title pull-left">Cadastrar</h4>
+                <h4 class="modal-title pull-left">Manutenção de Campanha</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="createModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -95,19 +106,17 @@
     </div>
 </div>
 
-
-<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div bsModal #deleteModal="bs-modal" class="modal fade">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header alert-danger">
-                <h4 class="modal-title pull-left">Confirmação</h4>
+                <h4 class="modal-title pull-left">Confirmação de exclusão</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form (ngSubmit)="crud.ConfirmDelete()" #deleteForm="ngForm">
-                    <input type="hidden" name="CampanhaId" id="CampanhaId" [(ngModel)]="crud.model.CampanhaId" />
                     <h4>Confirma a remoção deste item?</h4>
                 </form>
             </div>
