@@ -23,21 +23,21 @@ export class MakeSelectComponent implements OnInit {
 
     /**
     * Resource onde será feito o request
-    * Examplo `[dataitem]="'Campanha'"`
+    * Exemplo `[dataitem]="'Campanha'"`
     */
     @Input()
     dataitem: string;
 
     /**
     * Changes do feitos no select
-    * Examplo `(ngModelChange)="crud.filter.CampanhaId = $event"`
+    * Exemplo `(ngModelChange)="crud.filter.CampanhaId = $event"`
     */
     @Output()
     ngModelChange = new EventEmitter<number>();
 
     /**
     * Valor inicial que virá no select
-    * Examplo `[value]="crud.model.CampanhaId"`
+    * Exemplo `[value]="crud.model.CampanhaId"`
     */
     @Input()
     value: number;

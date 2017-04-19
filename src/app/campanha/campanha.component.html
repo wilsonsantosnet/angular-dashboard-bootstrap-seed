@@ -106,7 +106,9 @@
     </div>
 </div>
 
-<div bsModal #deleteModal="bs-modal" class="modal fade">
+<delete-campanha [crud]="crud" (deleteModalInstance)="deleteModal = $event"></delete-campanha>
+
+<!--<div bsModal #deleteModal="bs-modal" class="modal fade">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header alert-danger">
@@ -126,4 +128,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->

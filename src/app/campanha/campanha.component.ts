@@ -13,11 +13,12 @@ import { Campanha } from './campanha';
 export class CampanhaComponent implements OnInit {
 
     @ViewChild('createModal') public createModal: ModalDirective;
-    @ViewChild('deleteModal') public deleteModal: ModalDirective;
+    public deleteModal: ModalDirective;
 
     constructor(public crud: CrudService<Campanha, CampanhaFilter>) { }
 
     ngOnInit() {
+        console.log('init campanha');
         this.crud.Start('Campanha', new Campanha(), new CampanhaFilter(), this.createModal, this.deleteModal);
     }
 

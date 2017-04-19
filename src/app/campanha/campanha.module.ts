@@ -1,3 +1,4 @@
+import { DeleteCampanhaComponent } from './delete.component';
 import { MakeSelectComponent } from './../common/select.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,6 @@ import { CampanhaComponent } from 'app/campanha/campanha.component';
         CampanhaRoutingModule,
         ModalModule.forRoot(),
     ],
-    declarations: [CampanhaComponent, MakeSelectComponent]
+    declarations: [CampanhaComponent, MakeSelectComponent, DeleteCampanhaComponent]
 })
 export class CampanhaModule { }
