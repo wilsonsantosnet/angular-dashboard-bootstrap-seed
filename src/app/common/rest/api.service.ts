@@ -1,6 +1,5 @@
-import { HttpResult } from './http-result';
-import { Filter } from './filter';
-import { Campanha } from '../campanha/campanha';
+import { HttpResult } from '../models/http-result';
+import { Filter } from '../models/filter';
 import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
 import { Inject, Injectable, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs/Rx';
@@ -39,7 +38,7 @@ export class ApiService<T> {
     private requestOptions(): RequestOptions {
         const headers = new Headers({
             'Content-Type': 'application/json',
-            'token': '6f7b88a2-1b0a-4be4-b297-fb9ce5a8940f'
+            'token': 'a3d6c7bd-77de-439b-8175-88fe3de87fec-32-276-1-True-False'
         });
 
         return new RequestOptions({ headers: headers });

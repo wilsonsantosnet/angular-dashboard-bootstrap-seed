@@ -1,11 +1,11 @@
-import { DataItem } from './data-item';
-import { ApiService } from './api.service';
+import { DataItem } from '../models/data-item';
+import { ApiService } from '../rest/api.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * Cria um select - tem dependência de ApiService
  * Exemplo
- * `<make-select (ngModelChange)="crud.filter.CampanhaId = $event" [dataitem]="'Campanha'" [value]="crud.model.CampanhaId"></make-select>`
+ * `<make-select (ngModelChange)="crud.filter.MidiaId = $event" [dataitem]="'Midia'" [value]="crud.model.MidiaId"></make-select>`
  * Injetar esse component no módulo onde for utilizar
  * @constructor
  */
@@ -23,21 +23,21 @@ export class MakeSelectComponent implements OnInit {
 
     /**
     * Resource onde será feito o request
-    * Exemplo `[dataitem]="'Campanha'"`
+    * Exemplo `[dataitem]="'Midia'"`
     */
     @Input()
     dataitem: string;
 
     /**
     * Changes do feitos no select
-    * Exemplo `(ngModelChange)="crud.filter.CampanhaId = $event"`
+    * Exemplo `(ngModelChange)="crud.filter.MidiaId = $event"`
     */
     @Output()
     ngModelChange = new EventEmitter<number>();
 
     /**
     * Valor inicial que virá no select
-    * Exemplo `[value]="crud.model.CampanhaId"`
+    * Exemplo `[value]="crud.model.MidiaId"`
     */
     @Input()
     value: number;

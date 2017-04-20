@@ -1,0 +1,102 @@
+<div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group pull-right" style="padding-bottom:10px;">
+                <a href="javascript:history.back()" class="btn btn-primary btn-sm" data-original-title="" title=""><i class="fa fa-reply"></i> Voltar</a>
+                <a class="btn btn-success btn-sm" (click)="saveInstance.ExecuteCreate();"><i class="fa fa-plus"></i> Cadastrar Midia</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Filtros</div>
+                <div class="panel-body">
+                    <form (ngSubmit)="filter.ExecuteFilter()" #filterForm="ngForm">
+                        <section class="col-md-4">
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" name="Nome" [(ngModel)]="filter.model.Nome" />
+                            </div>
+                        </section>
+                        <section class="col-md-4">
+                            <div class="form-group">
+                                <label>Data</label>
+                                <input type="date" class="form-control" name="UserCreateDateStart" [(ngModel)]="filter.model.UserCreateDateStart" />
+                            </div>
+                        </section>
+                        <section class="col-md-4">
+                            <div class="form-group">
+                                <label>Midias</label>
+                                <make-select (ngModelChange)="filter.model.MidiaId = $event" [dataitem]="'Midia'"></make-select>
+                            </div>
+                        </section>
+                        <section class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="Ativo">Ativo?</label>
+                                <div class="radio">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="Ativo" [value]="undefined" [(ngModel)]="filter.model.Ativo" />Todos
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="Ativo" [value]="true" [(ngModel)]="filter.model.Ativo" />Sim
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="Ativo" [value]="false" [(ngModel)]="filter.model.Ativo" />Não
+                                    </label>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary" (click)="filterForm.ngSubmit.emit()">
+                        <span class="fa fa-search"></span>
+                        Filtrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Resultado</div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed has-tickbox table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Ativo</th>
+                                <th style="width:75px;" class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of filter.itens">
+                                <td>{{ item.MidiaId }}</td>
+                                <td>{{ item.Nome }}</td>
+                                <td>
+                                    <span class='label' [ngClass]="{'label-danger': !item.Ativo, 'label-success': item.Ativo}">{{ item.Ativo ? 'Sim' : 'Não' }}</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-xs btn-primary" (click)="saveInstance.ExecuteEdit(item.MidiaId);"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs btn-danger" (click)="deleteInstance.ExecuteDelete(item);"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-center">
+            </div>
+        </div>
+    </div>
+</div>
+
+<midia-save (onSave)="filter.ExecuteFilter()" (instance)="saveInstance = $event"></midia-save>
+
+<midia-delete (onDelete)="filter.ExecuteFilter()" (instance)="deleteInstance = $event"></midia-delete>

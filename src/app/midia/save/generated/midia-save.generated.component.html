@@ -1,0 +1,32 @@
+<div bsModal #saveModal="bs-modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <h4 class="modal-title pull-left">Manutenção de Midia</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="saveModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="save.ConfirmSave()" #createForm="ngForm">
+                    <input type="hidden" name="MidiaId" id="MidiaId" [(ngModel)]="save.model.MidiaId" />
+                    <div class="form-group">
+                        <label for="Nome">Nome</label>
+                        <input type="text" class="form-control" name="Nome" [(ngModel)]="save.model.Nome" required />
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" />Ativo?
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" (click)="saveModal.hide()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid" (click)="createForm.ngSubmit.emit()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

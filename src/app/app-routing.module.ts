@@ -10,7 +10,7 @@ import { LayoutComponent } from './layout/layout.component';
         path: '', component: LayoutComponent, children: [
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
           { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-          { path: 'campanha', loadChildren: './campanha/campanha.module#CampanhaModule' }
+          { path: 'midia', loadChildren: './midia/midia.module#MidiaModule' }
         ]
       }
     ]),

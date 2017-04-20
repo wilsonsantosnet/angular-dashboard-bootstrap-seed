@@ -9,10 +9,4 @@ export class Filter {
     public IsPaginate: boolean;
     public QueryOptimizerBehavior: string;
 
-    constructor() {
-        this.PageSize = 50;
-        this.PageIndex = 0;
-        this.IsPaginate = true;
-    }
-
 }
