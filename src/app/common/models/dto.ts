@@ -4,6 +4,4 @@ export class Dto {
     public ConfirmationResponseBehavior: string;
     public QueryOptimizerBehavior: string;
 
-    constructor() { }
-
 }

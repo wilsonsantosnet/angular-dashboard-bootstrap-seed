@@ -1,3 +1,4 @@
+import { CacheService } from './../cache/cache.service';
 import { HttpResult } from '../models/http-result';
 import { Filter } from '../models/filter';
 import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
@@ -18,12 +19,18 @@ export class ApiService<T> {
     public Delete = this._delete;
 
     private apiDefault = 'http://177.153.18.87:8077/FranqueadorApi/api';
+
+    protected cache = new CacheService();
     protected resource: string;
 
     constructor(private http: Http) { }
 
-    public setResource(resource: string) {
+    public setResource(resource: string, endpoint?: string) {
         this.resource = resource;
+
+        if (endpoint !== undefined) {
+            this.apiDefault = endpoint;
+        }
     }
 
     public getResource(): string {
@@ -38,7 +45,7 @@ export class ApiService<T> {
     private requestOptions(): RequestOptions {
         const headers = new Headers({
             'Content-Type': 'application/json',
-            'token': 'a3d6c7bd-77de-439b-8175-88fe3de87fec-32-276-1-True-False'
+            'token': this.cache.get('TOKEN')
         });
 
         return new RequestOptions({ headers: headers });
@@ -133,7 +140,7 @@ export class ApiService<T> {
     }
 
     private errorResult(error: Response): Observable<HttpResult<T>> {
-        return Observable.throw(error);
+        return Observable.throw(error.json());
     }
 
 }

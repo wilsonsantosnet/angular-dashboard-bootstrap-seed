@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<div class="container">
+    <div class="row" style="margin-top: 160px">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+
+            <div class="bs-callout bs-callout-danger" [innerHTML]="error" *ngIf="error"></div>
+            <div class="bs-callout bs-callout-success" [innerHTML]="success" *ngIf="success"></div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Acesso</div>
+                <div class="panel-body">
+                    <form (ngSubmit)="executeLogin()" #loginForm="ngForm">
+                        <section class="col-md-12">
+                            <div class="form-group">
+                                <label>Usuário</label>
+                                <input type="email" class="form-control" name="Email" [(ngModel)]="model.Email" required />
+                            </div>
+                        </section>
+                        <section class="col-md-12">
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input type="password" class="form-control" name="Password" [(ngModel)]="model.Password" required />
+                            </div>
+                        </section>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid" (click)="loginForm.ngSubmit.emit()">
+                        <span class="fa fa-check"></span>
+                        Entrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

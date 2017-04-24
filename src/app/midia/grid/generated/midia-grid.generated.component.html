@@ -1,0 +1,29 @@
+<table class="table table-bordered table-striped table-condensed has-tickbox table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                Nome
+                <button (click)="filterInstance.OrderBy('Nome')" class="btn btn-xs pull-right"><i class="fa fa-arrows-v"></i></button>
+            </th>
+            <th>
+                Ativo
+                <button (click)="filterInstance.OrderBy('Ativo')" class="btn btn-xs pull-right"><i class="fa fa-arrows-v"></i></button>
+            </th>
+            <th style="width:100px;" class="text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of dataList">
+            <td>{{ item.MidiaId }}</td>
+            <td>{{ item.Nome }}</td>
+            <td>
+                <span class='label' [ngClass]="{'label-danger': !item.Ativo, 'label-success': item.Ativo}">{{ item.Ativo ? 'Sim' : 'Não' }}</span>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-primary" (click)="saveInstance.ExecuteEdit(item.MidiaId);"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-xs btn-danger" (click)="deleteInstance.ExecuteDelete(item);"><i class="fa fa-trash-o"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

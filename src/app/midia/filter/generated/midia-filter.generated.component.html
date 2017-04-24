@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Filtros</div>
+            <div class="panel-body">
+                <form (ngSubmit)="filter.ExecuteFilter()" #filterForm="ngForm">
+                    <section class="col-md-4">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" name="Nome" [(ngModel)]="filter.model.Nome" />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input type="date" class="form-control" name="UserCreateDateStart" [(ngModel)]="filter.model.UserCreateDateStart" />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group">
+                            <label>Midias</label>
+                            <make-select (ngModelChange)="filter.model.MidiaId = $event" [dataitem]="'Midia'"></make-select>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group">
+                            <label for="Ativo">Ativo?</label>
+                            <div class="radio">
+                                <label class="radio-inline">
+                                    <input type="radio" name="Ativo" [value]="undefined" [(ngModel)]="filter.model.Ativo" />Todos
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="Ativo" [value]="true" [(ngModel)]="filter.model.Ativo" />Sim
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="Ativo" [value]="false" [(ngModel)]="filter.model.Ativo" />Não
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <button type="button" class="btn btn-primary" (click)="filterForm.ngSubmit.emit()">
+                    <span class="fa fa-search"></span>
+                    Filtrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

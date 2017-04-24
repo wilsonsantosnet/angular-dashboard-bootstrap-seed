@@ -1,3 +1,4 @@
+import { AuthService } from './../../common/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,4 +11,6 @@ import { LayoutTopComponent } from 'app/layout/top/layout-top.component';
     declarations: [LayoutTopComponent],
     exports: [LayoutTopComponent],
 })
-export class LayoutTopModule { }
+export class LayoutTopModule {
+
+}
