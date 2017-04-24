@@ -5905,7 +5905,7 @@ button.close {
       position: relative; } }
 
 .breadcrumb {
-  margin: 0 -15px; }
+  margin: 50px -15px -60px -15px; }
 
 body {
   background: #ffffff;
@@ -6009,4 +6009,12 @@ body {
 
 .bs-callout-success {
     border-left-color: #42A948;
+}
+
+.content{
+    margin-top: 40px;
+}
+
+.no-border{
+    border: none;
 }
