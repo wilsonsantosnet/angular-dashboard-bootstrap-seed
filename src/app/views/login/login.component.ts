@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs/Subject';
-import { AuthService } from './../common/auth/auth.service';
-import { Auth } from './../common/auth/auth';
+import { AuthService } from '../../common/auth/auth.service';
+import { Auth } from '../../common/auth/auth';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

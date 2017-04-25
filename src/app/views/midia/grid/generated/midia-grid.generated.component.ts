@@ -1,8 +1,8 @@
 import { MidiaFilter } from './../../models/midia.filter';
 import { Midia } from './../../models/midia';
-import { FilterService } from './../../../common/crud/filter.service';
-import { SaveService } from './../../../common/crud/save.service';
-import { RemoveService } from './../../../common/crud/remove.service';
+import { FilterService } from '../../../../common/crud/filter.service';
+import { SaveService } from '../../../../common/crud/save.service';
+import { RemoveService } from '../../../../common/crud/remove.service';
 import { OnInit, Input } from '@angular/core';
 
 export class MidiaGridGeneratedComponent implements OnInit {

@@ -7,8 +7,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { MidiaRoutingModule } from './routing/midia-routing.module';
 
-import { MakeSelectComponent } from './../common/components/select.component';
-import { MakePaginationComponent } from './../common/components/pagination.component';
+import { MakeSelectComponent } from '../../common/components/select.component';
+import { MakePaginationComponent } from '../../common/components/pagination.component';
 
 import { MidiaComponent } from './midia.component';
 import { MidiaDeleteComponent } from './delete/midia-delete.component';

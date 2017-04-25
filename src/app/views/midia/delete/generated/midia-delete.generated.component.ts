@@ -1,7 +1,7 @@
 import { OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { RemoveService } from '../../../common/crud/remove.service';
+import { RemoveService } from '../../../../common/crud/remove.service';
 import { Midia } from '../../models/midia';
 
 export class MidiaDeleteGeneratedComponent implements OnInit {

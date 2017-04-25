@@ -1,7 +1,7 @@
 import { OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { FilterService } from '../../../common/crud/filter.service';
+import { FilterService } from '../../../../common/crud/filter.service';
 import { MidiaFilter } from '../../models/midia.filter';
 import { Midia } from '../../models/midia';
 

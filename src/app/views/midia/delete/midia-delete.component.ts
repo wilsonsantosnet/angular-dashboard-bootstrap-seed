@@ -1,7 +1,7 @@
 import { MidiaDeleteGeneratedComponent } from './generated/midia-delete.generated.component';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { RemoveService } from '../../common/crud/remove.service';
+import { RemoveService } from '../../../common/crud/remove.service';
 import { Midia } from '../models/midia';
 
 @Component({
