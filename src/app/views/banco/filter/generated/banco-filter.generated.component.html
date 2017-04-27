@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Filtros</div>
+            <div class="panel-body">
+                <form (ngSubmit)="filter.ExecuteFilter()" #filterForm="ngForm">
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Nome</label>
+							<input type="text" class="form-control" name="Nome" [(ngModel)]="filter.model.Nome"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Numero</label>
+							<input type="text" class="form-control" name="Numero" [(ngModel)]="filter.model.Numero"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Digito</label>
+							<input type="text" class="form-control" name="Digito" [(ngModel)]="filter.model.Digito"  />
+						</div>
+					</section>
+				<section class="col-md-12">
+					<div class="form-group">
+						<label for="BoletoSemRegistro">BoletoSemRegistro?</label>
+						<div class="radio">
+							<label class="radio-inline">
+								<input type="radio" name="BoletoSemRegistro" [value]="undefined" [(ngModel)]="filter.model.BoletoSemRegistro"  />Todos
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="BoletoSemRegistro" [value]="true" [(ngModel)]="filter.model.BoletoSemRegistro"  />Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="BoletoSemRegistro" [value]="false" [(ngModel)]="filter.model.BoletoSemRegistro"  />Não
+							</label>
+						</div>
+					</div>
+				</section>
+				<section class="col-md-12">
+					<div class="form-group">
+						<label for="BoletoComRegistro">BoletoComRegistro?</label>
+						<div class="radio">
+							<label class="radio-inline">
+								<input type="radio" name="BoletoComRegistro" [value]="undefined" [(ngModel)]="filter.model.BoletoComRegistro"  />Todos
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="BoletoComRegistro" [value]="true" [(ngModel)]="filter.model.BoletoComRegistro"  />Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="BoletoComRegistro" [value]="false" [(ngModel)]="filter.model.BoletoComRegistro"  />Não
+							</label>
+						</div>
+					</div>
+				</section>
+				<section class="col-md-12">
+					<div class="form-group">
+						<label for="Ativo">Ativo?</label>
+						<div class="radio">
+							<label class="radio-inline">
+								<input type="radio" name="Ativo" [value]="undefined" [(ngModel)]="filter.model.Ativo"  />Todos
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="Ativo" [value]="true" [(ngModel)]="filter.model.Ativo"  />Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="Ativo" [value]="false" [(ngModel)]="filter.model.Ativo"  />Não
+							</label>
+						</div>
+					</div>
+				</section>
+
+                </form>
+            </div>
+            <div class="panel-footer">
+                <button type="button" class="btn btn-primary" (click)="filterForm.ngSubmit.emit()">
+                    <span class="fa fa-search"></span>
+                    Filtrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

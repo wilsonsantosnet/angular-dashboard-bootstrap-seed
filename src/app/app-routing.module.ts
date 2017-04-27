@@ -8,6 +8,10 @@ import { routesGenerated } from './routing/routing.generated.module';
 
 import { LayoutComponent } from './layout/layout.component';
 
+import { MakeSelectComponent } from './common/components/select.component';
+import { MakePaginationComponent } from './common/components/pagination.component';
+
+
 @NgModule({
     imports: [
         RouterModule.forRoot([

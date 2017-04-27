@@ -1,0 +1,47 @@
+<table class="table table-bordered table-striped table-condensed has-tickbox table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                Agencia
+                <button (click)="filterInstance.OrderBy('Agencia')" class="btn btn-xs btn-default no-border pull-right">
+                    <i class="fa fa-arrows-v"></i>
+                </button>
+            </th>
+            <th>
+                DigitoVerificadorAgencia
+                <button (click)="filterInstance.OrderBy('DigitoVerificadorAgencia')" class="btn btn-xs btn-default no-border pull-right">
+                    <i class="fa fa-arrows-v"></i>
+                </button>
+            </th>
+            <th>
+                NumeroConta
+                <button (click)="filterInstance.OrderBy('NumeroConta')" class="btn btn-xs btn-default no-border pull-right">
+                    <i class="fa fa-arrows-v"></i>
+                </button>
+            </th>
+            <th>
+                DigitoVerificador
+                <button (click)="filterInstance.OrderBy('DigitoVerificador')" class="btn btn-xs btn-default no-border pull-right">
+                    <i class="fa fa-arrows-v"></i>
+                </button>
+            </th>
+
+            <th style="width:100px;" class="text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of dataList">
+            <td>{{ item.DadosBancariosId }}</td>
+            <td>{{ item.Agencia }}</td>
+            <td>{{ item.DigitoVerificadorAgencia }}</td>
+            <td>{{ item.NumeroConta }}</td>
+            <td>{{ item.DigitoVerificador }}</td>
+
+            <td>
+                <button class="btn btn-xs btn-primary" (click)="saveInstance.ExecuteEdit(item.DadosBancariosId);"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-xs btn-danger" (click)="deleteInstance.ExecuteDelete(item);"><i class="fa fa-trash-o"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

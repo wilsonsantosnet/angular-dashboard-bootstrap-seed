@@ -1,0 +1,54 @@
+<div bsModal #saveModal="bs-modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <h4 class="modal-title pull-left">Manutenção de Dados Bancarios</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="saveModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="save.ConfirmSave()" #createForm="ngForm">
+					<div class="row">
+				<input type="hidden" name="DadosBancariosId" id="DadosBancariosId" [(ngModel)]="save.model.DadosBancariosId" />
+				<section class="col-md-12">
+					<div class="form-group">
+						<label>Banco</label>
+						<make-select (ngModelChange)="save.model.BancoId = $event" [dataitem]="'Banco'"></make-select>
+					</div>
+				</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Agencia</label>
+							<input type="text" class="form-control" name="Agencia" [(ngModel)]="save.model.Agencia"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">DigitoVerificadorAgencia</label>
+							<input type="text" class="form-control" name="DigitoVerificadorAgencia" [(ngModel)]="save.model.DigitoVerificadorAgencia"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">NumeroConta</label>
+							<input type="text" class="form-control" name="NumeroConta" [(ngModel)]="save.model.NumeroConta"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">DigitoVerificador</label>
+							<input type="text" class="form-control" name="DigitoVerificador" [(ngModel)]="save.model.DigitoVerificador"  />
+						</div>
+					</section>
+
+					</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" (click)="saveModal.hide()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid" (click)="createForm.ngSubmit.emit()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

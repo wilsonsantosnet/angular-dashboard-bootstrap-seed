@@ -2,25 +2,32 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header alert-success">
-                <h4 class="modal-title pull-left">Manutenção de Midia</h4>
+                <h4 class="modal-title pull-left">Manutenção de Mídia</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="saveModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form (ngSubmit)="save.ConfirmSave()" #createForm="ngForm">
-                    <input type="hidden" name="MidiaId" id="MidiaId" [(ngModel)]="save.model.MidiaId" />
-                    <div class="form-group">
-                        <label for="Nome">Nome</label>
-                        <input type="text" class="form-control" name="Nome" [(ngModel)]="save.model.Nome" required />
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" />Ativo?
-                            </label>
-                        </div>
-                    </div>
+					<div class="row">
+				<input type="hidden" name="MidiaId" id="MidiaId" [(ngModel)]="save.model.MidiaId" />
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Nome</label>
+							<input type="text" class="form-control" name="Nome" [(ngModel)]="save.model.Nome"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" required />Ativo?
+								</label>
+							</div>
+						</div>
+					</section>
+
+					</div>
                 </form>
             </div>
             <div class="modal-footer">

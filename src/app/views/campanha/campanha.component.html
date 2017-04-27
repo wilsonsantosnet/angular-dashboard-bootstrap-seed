@@ -1,0 +1,35 @@
+<ol class="breadcrumb hidden-xs">
+    <li>Cadastro</li>
+    <li class="active">Campanha</li>
+</ol>
+<br>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group pull-right" style="padding-bottom:10px;">
+                <a href="javascript:history.back()" class="btn btn-primary btn-sm" data-original-title="" title=""><i class="fa fa-reply"></i> Voltar</a>
+                <a class="btn btn-success btn-sm" (click)="saveInstance.ExecuteCreate();"><i class="fa fa-plus"></i> Cadastrar</a>
+            </div>
+        </div>
+    </div>
+
+    <campanha-filter (instance)="filterInstance = $event"></campanha-filter>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Resultado</div>
+                <div class="table-responsive">
+                    <campanha-grid [dataList]="filterInstance.dataList" [filterInstance]="filterInstance" [saveInstance]="saveInstance" [deleteInstance]="deleteInstance"></campanha-grid>
+                </div>
+                <div class="panel-footer text-center">
+                    <make-pagination [filterInstance]="filterInstance"></make-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<campanha-save (onSave)="filterInstance.ExecuteFilter()" (instance)="saveInstance = $event"></campanha-save>
+
+<campanha-delete (onDelete)="filterInstance.ExecuteFilter()" (instance)="deleteInstance = $event"></campanha-delete>

@@ -1,4 +1,4 @@
-import { OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { RemoveService } from '../../../../common/crud/remove.service';

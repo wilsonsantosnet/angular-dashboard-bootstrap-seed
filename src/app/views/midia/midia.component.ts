@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Component, OnInit } from '@angular/core';
 
 import { RemoveService } from '../../common/crud/remove.service';
 import { FilterService } from '../../common/crud/filter.service';

@@ -1,0 +1,69 @@
+<div bsModal #saveModal="bs-modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <h4 class="modal-title pull-left">Manutenção de Banco</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="saveModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="save.ConfirmSave()" #createForm="ngForm">
+					<div class="row">
+				<input type="hidden" name="BancoId" id="BancoId" [(ngModel)]="save.model.BancoId" />
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Nome</label>
+							<input type="text" class="form-control" name="Nome" [(ngModel)]="save.model.Nome" required />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Numero</label>
+							<input type="text" class="form-control" name="Numero" [(ngModel)]="save.model.Numero"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<label for="Nome">Digito</label>
+							<input type="text" class="form-control" name="Digito" [(ngModel)]="save.model.Digito"  />
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="BoletoSemRegistro" [(ngModel)]="save.model.BoletoSemRegistro" required />BoletoSemRegistro?
+								</label>
+							</div>
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="BoletoComRegistro" [(ngModel)]="save.model.BoletoComRegistro" required />BoletoComRegistro?
+								</label>
+							</div>
+						</div>
+					</section>
+					<section class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" required />Ativo?
+								</label>
+							</div>
+						</div>
+					</section>
+
+					</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" (click)="saveModal.hide()">Cancelar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid" (click)="createForm.ngSubmit.emit()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
