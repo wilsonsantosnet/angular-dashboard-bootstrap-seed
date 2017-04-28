@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
 
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
         BrowserModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
+        ToastContainerModule.forRoot(),
         FormsModule,
         HttpModule,
         AppRoutingModule,

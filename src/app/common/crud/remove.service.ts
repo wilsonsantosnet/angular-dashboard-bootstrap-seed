@@ -32,6 +32,7 @@ export class RemoveService<T extends Dto> extends ApiService<T> {
     }
 
     private CallbackConfirmDelete(data: T) {
+        this.successNotification('Registro removido com sucesso');
         this.modalInstance.hide();
         this.callBack.next();
     }

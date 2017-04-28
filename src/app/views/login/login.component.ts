@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     executeLogin() {
         this.error = null;
         this.success = null;
+        this.account.enableNotifification = true;
         this.account.login(this.model,
             data => {
                 this.success = 'Login realizado, aguarde. Redirecionando!';

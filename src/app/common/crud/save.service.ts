@@ -19,6 +19,9 @@ export class SaveService<T extends Dto, TFilter extends Filter> extends ApiServi
 
     public callBack = new Subject<string>();
 
+    public isCreate: boolean;
+    public isEdit: boolean;
+
     onSave$ = this.callBack.asObservable();
 
     public Start(resource: string, startModel: T, startFilter, modalInstance: ModalDirective) {
@@ -32,11 +35,13 @@ export class SaveService<T extends Dto, TFilter extends Filter> extends ApiServi
     public ExecuteEdit(id) {
         this.filter.Id = id;
         this.Get(this.filter).subscribe(data => this.CallbackExecuteEdit(data.Data));
+        this.SetEditAction();
     }
 
     public ExecuteCreate() {
         this.model = this.startModel;
         this.modalInstance.show();
+        this.SetCreateAction();
     }
 
     public ConfirmSave() {
@@ -44,6 +49,15 @@ export class SaveService<T extends Dto, TFilter extends Filter> extends ApiServi
     }
 
     private CallbackConfirmSave(data: T) {
+
+        if (this.isCreate) {
+            this.successNotification('Registro criado com sucesso');
+        }
+
+        if (this.isEdit) {
+            this.successNotification('Registro alterado com sucesso');
+        }
+
         this.modalInstance.hide();
         this.callBack.next();
     }
@@ -52,6 +66,18 @@ export class SaveService<T extends Dto, TFilter extends Filter> extends ApiServi
         this.filter.Id = null;
         this.model = data;
         this.modalInstance.show();
+    }
+
+
+
+    private SetEditAction() {
+        this.isCreate = false;
+        this.isEdit = true;
+    }
+
+    private SetCreateAction() {
+        this.isCreate = true;
+        this.isEdit = false;
     }
 
 }

@@ -4,7 +4,7 @@ import { Filter } from '../models/filter';
 import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
 import { Inject, Injectable, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs/Rx';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService, ToastConfig } from 'ngx-toastr';
 
 @Injectable()
 export class ApiService<T> {
@@ -19,12 +19,18 @@ export class ApiService<T> {
     public Put = this._put;
     public Delete = this._delete;
 
+    public enableNotifification = true;
+    public configNotifification = new ToastConfig();
+
     private apiDefault = 'http://177.153.18.87:8075/FranqueadorApi/api';
 
     protected cache = new CacheService();
     protected resource: string;
 
-    constructor(private http: Http, public notification: ToastrService) { }
+    public teste: ToastrService;
+
+    constructor(private http: Http, public notification: ToastrService) {
+    }
 
     public setResource(resource: string, endpoint?: string) {
         this.resource = resource;
@@ -57,24 +63,24 @@ export class ApiService<T> {
             this.requestOptions().merge(new RequestOptions({
                 search: this.makeSearchParams(data)
             })))
-            .map(this.successResult)
-            .catch(this.errorResult);
+            .map(res => { return this.successResult(res); })
+            .catch(error => { return this.errorResult(error); });
     }
 
     private _post(data: any): Observable<HttpResult<T>> {
         return this.http.post(this.makeBaseUrl(),
             JSON.stringify(data),
             this.requestOptions())
-            .map(this.successResult)
-            .catch(this.errorResult);
+            .map(res => { return this.successResult(res); })
+            .catch(error => { return this.errorResult(error); });
     }
 
     private _put(data: any): Observable<HttpResult<T>> {
         return this.http.put(this.makeBaseUrl(),
             JSON.stringify(data),
             this.requestOptions())
-            .map(this.successResult)
-            .catch(this.errorResult);
+            .map(res => { return this.successResult(res); })
+            .catch(error => { return this.errorResult(error); });
     }
 
     private _getDataListCustom(filters?: Filter): Observable<HttpResult<T>> {
@@ -132,17 +138,36 @@ export class ApiService<T> {
             this.requestOptions().merge(new RequestOptions({
                 search: this.makeSearchParams(filters)
             })))
-            .map(this.successResult)
-            .catch(this.errorResult);
+            .map(res => { return this.successResult(res); })
+            .catch(error => { return this.errorResult(error); });
+    }
+
+    protected successNotification(message: string, title?: string) {
+        this.notification.success(message, title || 'Sucesso', this.getConfigNotification());
     }
 
     private successResult(res: Response): Observable<HttpResult<T>> {
-        this.notification.success('Hello world!', 'Toastr fun!');
         return res.json();
     }
 
     private errorResult(error: Response): Observable<HttpResult<T>> {
-        return Observable.throw(error.json());
+        const err = error.json() as HttpResult<T>;
+
+        if (this.enableNotifification) {
+            this.notification.error(err.Errors[0], 'Erro!', this.getConfigNotification());
+        }
+
+        return Observable.throw(err);
+    }
+
+    protected getConfigNotification() {
+
+        this.configNotifification.timeOut = 5000;
+        this.configNotifification.enableHtml = true;
+        this.configNotifification.closeButton = true;
+        this.configNotifification.progressBar = true;
+
+        return this.configNotifification;
     }
 
 }
