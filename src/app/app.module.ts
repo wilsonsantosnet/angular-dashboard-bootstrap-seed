@@ -1,3 +1,4 @@
+import { GlobalVariableService } from './common/global.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,8 +14,9 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
+
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -25,7 +27,7 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
         AppRoutingModule,
         LayoutModule,
     ],
-    providers: [],
+    providers: [GlobalVariableService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angul
 import { Inject, Injectable, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs/Rx';
 import { ToastrService, ToastConfig } from 'ngx-toastr';
+import { GlobalVariableService } from './../global.module';
 
 @Injectable()
 export class ApiService<T> {
@@ -29,7 +30,7 @@ export class ApiService<T> {
 
     public teste: ToastrService;
 
-    constructor(private http: Http, public notification: ToastrService) {
+    constructor(private http: Http, public notification: ToastrService, private global: GlobalVariableService) {
     }
 
     public setResource(resource: string, endpoint?: string) {
@@ -59,28 +60,34 @@ export class ApiService<T> {
     }
 
     private _delete(data: any): Observable<HttpResult<T>> {
+        this.global.REQUESTING = true;
         return this.http.delete(this.makeBaseUrl(),
             this.requestOptions().merge(new RequestOptions({
                 search: this.makeSearchParams(data)
             })))
             .map(res => { return this.successResult(res); })
-            .catch(error => { return this.errorResult(error); });
+            .catch(error => { return this.errorResult(error); })
+            .finally(() => { this.global.REQUESTING = false; });
     }
 
     private _post(data: any): Observable<HttpResult<T>> {
+        this.global.REQUESTING = true;
         return this.http.post(this.makeBaseUrl(),
             JSON.stringify(data),
             this.requestOptions())
             .map(res => { return this.successResult(res); })
-            .catch(error => { return this.errorResult(error); });
+            .catch(error => { return this.errorResult(error); })
+            .finally(() => { this.global.REQUESTING = false; });
     }
 
     private _put(data: any): Observable<HttpResult<T>> {
+        this.global.REQUESTING = true;
         return this.http.put(this.makeBaseUrl(),
             JSON.stringify(data),
             this.requestOptions())
             .map(res => { return this.successResult(res); })
-            .catch(error => { return this.errorResult(error); });
+            .catch(error => { return this.errorResult(error); })
+            .finally(() => { this.global.REQUESTING = false; });
     }
 
     private _getDataListCustom(filters?: Filter): Observable<HttpResult<T>> {
@@ -134,12 +141,15 @@ export class ApiService<T> {
             url += '/' + filters.Id;
         }
 
+        this.global.REQUESTING = true;
+
         return this.http.get(url,
             this.requestOptions().merge(new RequestOptions({
                 search: this.makeSearchParams(filters)
             })))
             .map(res => { return this.successResult(res); })
-            .catch(error => { return this.errorResult(error); });
+            .catch(error => { return this.errorResult(error); })
+            .finally(() => { this.global.REQUESTING = false; });
     }
 
     protected successNotification(message: string, title?: string) {

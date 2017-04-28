@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { BancoRoutingModule } from './routing/banco-routing.module';
 
-import { SharedModule } from './../../common/shared.module.';
+import { SharedModule } from './../../common/shared.module';
 
 import { BancoComponent } from './banco.component';
 import { BancoDeleteComponent } from './delete/banco-delete.component';

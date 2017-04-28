@@ -106,12 +106,12 @@
     "directive-selector": [
       true,
       "attribute",
-      "camelCase"
+      ""
     ],
     "component-selector": [
       true,
       "element",
-      "kebab-case"
+      ""
     ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,

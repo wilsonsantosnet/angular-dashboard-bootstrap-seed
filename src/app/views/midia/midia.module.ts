@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { MidiaRoutingModule } from './routing/midia-routing.module';
 
-import { SharedModule } from './../../common/shared.module.';
+import { SharedModule } from './../../common/shared.module';
 
 import { MidiaComponent } from './midia.component';
 import { MidiaDeleteComponent } from './delete/midia-delete.component';
