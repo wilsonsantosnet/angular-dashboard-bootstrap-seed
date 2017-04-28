@@ -23,7 +23,7 @@ export class ApiService<T> {
     public enableNotifification = true;
     public configNotifification = new ToastConfig();
 
-    private apiDefault = 'http://177.153.18.87:8075/FranqueadorApi/api';
+    private apiDefault: string;
 
     protected cache = new CacheService();
     protected resource: string;
@@ -31,6 +31,7 @@ export class ApiService<T> {
     public teste: ToastrService;
 
     constructor(private http: Http, public notification: ToastrService, private global: GlobalVariableService) {
+        this.apiDefault = this.global.BASE_API_URL
     }
 
     public setResource(resource: string, endpoint?: string) {
