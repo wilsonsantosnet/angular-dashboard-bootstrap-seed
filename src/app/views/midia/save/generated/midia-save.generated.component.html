@@ -13,7 +13,7 @@
 				<input type="hidden" name="MidiaId" id="MidiaId" [(ngModel)]="save.model.MidiaId" />
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">Nome</label>
+							<label for="Nome"><ng-container i18n>Nome</ng-container></label>
 							<input type="text" class="form-control" name="Nome" [(ngModel)]="save.model.Nome"  />
 						</div>
 					</section>
@@ -21,7 +21,7 @@
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" required />Ativo?
+									<input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" required /><ng-container i18n>Ativo</ng-container>?
 								</label>
 							</div>
 						</div>

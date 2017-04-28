@@ -6,13 +6,13 @@
                 <form (ngSubmit)="filter.ExecuteFilter()" #filterForm="ngForm">
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">Nome</label>
+							<label for="Nome"><ng-container i18n>Nome</ng-container></label>
 							<input type="text" class="form-control" name="Nome" [(ngModel)]="filter.model.Nome"  />
 						</div>
 					</section>
 				<section class="col-md-12">
 					<div class="form-group">
-						<label for="Ativo">Ativo?</label>
+						<label for="Ativo"><ng-container i18n>Ativo</ng-container>?</label>
 						<div class="radio">
 							<label class="radio-inline">
 								<input type="radio" name="Ativo" [value]="undefined" [(ngModel)]="filter.model.Ativo"  />Todos

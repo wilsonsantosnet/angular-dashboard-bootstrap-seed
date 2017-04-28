@@ -6,31 +6,31 @@
                 <form (ngSubmit)="filter.ExecuteFilter()" #filterForm="ngForm">
 				<section class="col-md-12">
 					<div class="form-group">
-						<label>Banco</label>
+						<label><ng-container i18n>Banco</ng-container></label>
 						<make-select (ngModelChange)="filter.model.BancoId = $event" [dataitem]="'Banco'"></make-select>
 					</div>
 				</section>
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">Agencia</label>
+							<label for="Agencia"><ng-container i18n>Agencia</ng-container></label>
 							<input type="text" class="form-control" name="Agencia" [(ngModel)]="filter.model.Agencia"  />
 						</div>
 					</section>
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">DigitoVerificadorAgencia</label>
+							<label for="DigitoVerificadorAgencia"><ng-container i18n>DigitoVerificadorAgencia</ng-container></label>
 							<input type="text" class="form-control" name="DigitoVerificadorAgencia" [(ngModel)]="filter.model.DigitoVerificadorAgencia"  />
 						</div>
 					</section>
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">NumeroConta</label>
+							<label for="NumeroConta"><ng-container i18n>NumeroConta</ng-container></label>
 							<input type="text" class="form-control" name="NumeroConta" [(ngModel)]="filter.model.NumeroConta"  />
 						</div>
 					</section>
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">DigitoVerificador</label>
+							<label for="DigitoVerificador"><ng-container i18n>DigitoVerificador</ng-container></label>
 							<input type="text" class="form-control" name="DigitoVerificador" [(ngModel)]="filter.model.DigitoVerificador"  />
 						</div>
 					</section>

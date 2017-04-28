@@ -13,19 +13,19 @@
 				<input type="hidden" name="BancoId" id="BancoId" [(ngModel)]="save.model.BancoId" />
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">Nome</label>
+							<label for="Nome"><ng-container i18n>Nome</ng-container></label>
 							<input type="text" class="form-control" name="Nome" [(ngModel)]="save.model.Nome" required />
 						</div>
 					</section>
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">Numero</label>
+							<label for="Numero"><ng-container i18n>Numero</ng-container></label>
 							<input type="text" class="form-control" name="Numero" [(ngModel)]="save.model.Numero"  />
 						</div>
 					</section>
 					<section class="col-md-12">
 						<div class="form-group">
-							<label for="Nome">Digito</label>
+							<label for="Digito"><ng-container i18n>Digito</ng-container></label>
 							<input type="text" class="form-control" name="Digito" [(ngModel)]="save.model.Digito"  />
 						</div>
 					</section>
@@ -33,7 +33,7 @@
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="BoletoSemRegistro" [(ngModel)]="save.model.BoletoSemRegistro" required />BoletoSemRegistro?
+									<input type="checkbox" name="BoletoSemRegistro" [(ngModel)]="save.model.BoletoSemRegistro" required /><ng-container i18n>BoletoSemRegistro</ng-container>?
 								</label>
 							</div>
 						</div>
@@ -42,7 +42,7 @@
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="BoletoComRegistro" [(ngModel)]="save.model.BoletoComRegistro" required />BoletoComRegistro?
+									<input type="checkbox" name="BoletoComRegistro" [(ngModel)]="save.model.BoletoComRegistro" required /><ng-container i18n>BoletoComRegistro</ng-container>?
 								</label>
 							</div>
 						</div>
@@ -51,7 +51,7 @@
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" required />Ativo?
+									<input type="checkbox" name="Ativo" [(ngModel)]="save.model.Ativo" required /><ng-container i18n>Ativo</ng-container>?
 								</label>
 							</div>
 						</div>

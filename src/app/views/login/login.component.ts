@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.account.setResource('ColaboradorAuth', 'http://cnabox.com.br:8099/AccessApi/api');
+        this.account.setResource('ColaboradorAuth', 'http://cnabox.com.br:8075/AccessApi/api');
     }
 
     executeLogin() {
