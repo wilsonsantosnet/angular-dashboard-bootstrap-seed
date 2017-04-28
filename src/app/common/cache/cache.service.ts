@@ -1,26 +1,52 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from './cookie.service';
+import { LocalStorageService } from './local-storage.service';
+import { ECacheType } from 'app/common/cache/type-cache.enum';
 
 @Injectable()
 export class CacheService {
 
-    get(key: string) {
-        return localStorage.getItem(key);
+    public static get(key: string, type: ECacheType) {
+        if (type === ECacheType.COOKIE) {
+            return CookieService.get(key);
+        } else if (type === ECacheType.LOCAL) {
+            return LocalStorageService.get(key);
+        }
     }
 
-    add(key: string, data: any) {
-        localStorage.setItem(key, data);
+    public static add(key: string, data: any, type: ECacheType, cookieExpiredDay?: number) {
+        if (type === ECacheType.COOKIE) {
+            CookieService.add(key, data, cookieExpiredDay);
+        } else if (type === ECacheType.LOCAL) {
+            LocalStorageService.add(key, data);
+        }
     }
 
-    update(key: string, data: any) {
-        localStorage.setItem(key, data);
+    public static update(key: string, data: any, type: ECacheType, cookieExpiredDay?: number) {
+        if (type === ECacheType.COOKIE) {
+            CookieService.remove(key);
+            CookieService.add(key, data, cookieExpiredDay);
+        } else if (type === ECacheType.LOCAL) {
+            LocalStorageService.add(key, data);
+        }
     }
 
-    remove(key: string) {
-        localStorage.removeItem(key);
+    public static remove(key: string, type: ECacheType) {
+        if (type === ECacheType.COOKIE) {
+            CookieService.remove(key);
+        } else if (type === ECacheType.LOCAL) {
+            LocalStorageService.remove(key);
+        }
     }
 
-    reset() {
-        localStorage.clear();
+    public static reset(type?: ECacheType) {
+        if (type === ECacheType.COOKIE) {
+            CookieService.reset();
+        } else if (type === ECacheType.LOCAL) {
+            LocalStorageService.reset();
+        } else {
+            CookieService.reset();
+            LocalStorageService.reset();
+        }
     }
-
 }

@@ -1,4 +1,4 @@
-import { CacheService } from './../cache/cache.service';
+import { ECacheType } from 'app/common/cache/type-cache.enum';
 import { HttpResult } from '../models/http-result';
 import { Filter } from '../models/filter';
 import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
@@ -6,6 +6,7 @@ import { Inject, Injectable, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs/Rx';
 import { ToastrService, ToastConfig } from 'ngx-toastr';
 import { GlobalVariableService } from './../global.module';
+import { CacheService } from './../cache/cache.service';
 
 @Injectable()
 export class ApiService<T> {
@@ -25,7 +26,6 @@ export class ApiService<T> {
 
     private apiDefault: string;
 
-    protected cache = new CacheService();
     protected resource: string;
 
     public teste: ToastrService;
@@ -54,7 +54,7 @@ export class ApiService<T> {
     private requestOptions(): RequestOptions {
         const headers = new Headers({
             'Content-Type': 'application/json',
-            'token': this.cache.get('TOKEN')
+            'token': CacheService.get('TOKEN', ECacheType.COOKIE)
         });
 
         return new RequestOptions({ headers: headers });

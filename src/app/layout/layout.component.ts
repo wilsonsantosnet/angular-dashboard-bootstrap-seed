@@ -1,4 +1,5 @@
-import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { ECacheType } from 'app/common/cache/type-cache.enum';
+import { CacheService } from './../common/cache/cache.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,13 +11,15 @@ export class LayoutComponent implements OnInit {
 
     menuOpen: boolean;
 
+    constructor() { }
+
     ngOnInit() {
-        this.menuOpen = Cookie.get('menuOpen') === 'true';
+        this.menuOpen = CacheService.get('menuOpen', ECacheType.COOKIE) === 'true';
     }
 
     onChangeMenu(message: string): void {
         this.menuOpen = !this.menuOpen;
-        Cookie.set('menuOpen', this.menuOpen.toString());
+        CacheService.add('menuOpen', this.menuOpen.toString(), ECacheType.COOKIE);
     }
 
 }

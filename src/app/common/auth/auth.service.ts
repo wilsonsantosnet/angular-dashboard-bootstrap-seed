@@ -1,6 +1,7 @@
+import { ECacheType } from 'app/common/cache/type-cache.enum';
+import { CacheService } from './../cache/cache.service';
 import { Auth } from './auth';
 import { Injectable } from '@angular/core';
-
 import { ApiService } from '../rest/api.service';
 
 @Injectable()
@@ -9,7 +10,7 @@ export class AuthService extends ApiService<Auth> {
     login(model: Auth, success, error) {
         this.Post(model).subscribe(
             data => {
-                this.cache.add('TOKEN', data.Data.Token);
+                CacheService.add('TOKEN', data.Data.Token, ECacheType.COOKIE, 0.1);
                 success(data);
             },
             err => {
@@ -18,12 +19,12 @@ export class AuthService extends ApiService<Auth> {
     }
 
     logout() {
-        this.cache.reset();
+        CacheService.reset();
         window.location.href = '/';
     }
 
     isAuthenticated(): boolean {
-        const token = this.cache.get('TOKEN');
+        const token = CacheService.get('TOKEN', ECacheType.COOKIE);
         return token !== null;
     }
 
